@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
-using TaskHub.Api.Data;
-using TaskHub.Api.Interfaces;
-using TaskHub.Api.Services;
+using TaskHubApi.Data;
+using TaskHubApi.Interfaces;
+using TaskHubApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

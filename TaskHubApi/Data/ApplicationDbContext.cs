@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using TaskHub.Api.Models;
+using TaskHubApi.Models;
 
-namespace TaskHub.Api.Data
+namespace TaskHubApi.Data
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {

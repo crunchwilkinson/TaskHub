@@ -1,6 +1,6 @@
-using TaskHub.Api.DTOs;
+using TaskHubApi.DTOs;
 
-namespace TaskHub.Api.Interfaces
+namespace TaskHubApi.Interfaces
 {
     public interface ITaskInterface
     {

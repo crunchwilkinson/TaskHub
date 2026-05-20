@@ -1,4 +1,4 @@
-namespace TaskHub.Api.Models
+namespace TaskHubApi.Models
 {
     public class TaskItem
     {

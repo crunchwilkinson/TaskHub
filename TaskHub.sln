@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskHub.Api", "TaskHub.Api\TaskHub.Api.csproj", "{BF069AE7-6D7F-401E-83C9-B4CCD3B485FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskHub.Api", "TaskHubApi\TaskHub.Api.csproj", "{BF069AE7-6D7F-401E-83C9-B4CCD3B485FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

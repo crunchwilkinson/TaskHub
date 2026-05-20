@@ -1,4 +1,4 @@
-namespace TaskHub.Api.DTOs
+namespace TaskHubApi.DTOs
 {
     public record TaskDto(int Id, string Title, string? Description, bool IsCompleted, DateTime CreatedAt);
     public record CreateTaskDto(string Title, string? Description);

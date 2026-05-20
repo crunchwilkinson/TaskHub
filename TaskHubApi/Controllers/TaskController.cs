@@ -1,10 +1,10 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TaskHub.Api.DTOs;
-using TaskHub.Api.Interfaces;
+using TaskHubApi.DTOs;
+using TaskHubApi.Interfaces;
 
-namespace TaskHub.Api.Controllers
+namespace TaskHubApi.Controllers
 {
     [Authorize]
     [ApiController]

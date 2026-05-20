@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using TaskHub.Api.Data;
-using TaskHub.Api.DTOs;
-using TaskHub.Api.Interfaces;
-using TaskHub.Api.Models;
+using TaskHubApi.Data;
+using TaskHubApi.DTOs;
+using TaskHubApi.Interfaces;
+using TaskHubApi.Models;
 
-namespace TaskHub.Api.Services
+namespace TaskHubApi.Services
 {
     public class TaskService : ITaskInterface
     {
