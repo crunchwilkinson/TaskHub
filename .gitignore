@@ -17,6 +17,8 @@ dist/
 
 # Databases
 *.db
+*.db-shm
+*.db-wal
 
 # OS specific
 .DS_Store
