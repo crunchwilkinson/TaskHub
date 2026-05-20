@@ -1,0 +1,23 @@
+# .NET
+[Bb]in/
+[Oo]bj/
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+
+# Angular
+node_modules/
+.angular/
+dist/
+.editorconfig
+
+# IDEs
+.vscode/
+
+# Databases
+*.db
+
+# OS specific
+.DS_Store
+Thumbs.db
