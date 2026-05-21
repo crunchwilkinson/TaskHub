@@ -5,11 +5,12 @@ import { Router } from '@angular/router';
 import { TaskService } from '../../core/services/task.service';
 import { AuthService } from '../../core/services/auth.service';
 import { TaskDto } from '../../core/models/task.model';
+import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, LoadingSpinnerComponent],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'] // Optional for styling
 })
@@ -22,6 +23,7 @@ export class DashboardComponent implements OnInit {
 
   // State: This array holds the data displayed in the UI
   tasks: TaskDto[] = [];
+  isLoading = true; 
 
   // Define the Add Task form
   taskForm = this.fb.group({
@@ -35,9 +37,17 @@ export class DashboardComponent implements OnInit {
   }
 
   loadTasks(): void {
+    this.isLoading = true; // Start loading
+    
     this.taskService.getTasks().subscribe({
-      next: (data) => this.tasks = data,
-      error: (err) => console.error('Failed to load tasks', err)
+      next: (data) => {
+        this.tasks = data;
+        this.isLoading = false; // Stop loading on success
+      },
+      error: (err) => {
+        console.error('Failed to load tasks', err);
+        this.isLoading = false; // Stop loading on error
+      }
     });
   }
 
