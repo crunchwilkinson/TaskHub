@@ -1,0 +1,56 @@
+<div class="dashboard-container">
+  <header>
+    <h1>My Tasks</h1>
+    <button (click)="logout()">Log Out</button>
+  </header>
+
+  <!-- Add Task Form -->
+  <section class="add-task-section">
+    <form [formGroup]="taskForm" (ngSubmit)="addTask()">
+      <input 
+        type="text" 
+        formControlName="title" 
+        placeholder="What needs to be done?" 
+      />
+      <input 
+        type="text" 
+        formControlName="description" 
+        placeholder="Details (optional)" 
+      />
+      <button type="submit" [disabled]="taskForm.invalid">Add Task</button>
+    </form>
+  </section>
+
+  <!-- Task List -->
+  <section class="task-list-section">
+    
+    <!-- Modern Angular loop to render each task -->
+    @for (task of tasks; track task.id) {
+      <div class="task-card" [class.completed]="task.isCompleted">
+        
+        <!-- Checkbox binds to the toggleCompletion method -->
+        <input 
+          type="checkbox" 
+          [checked]="task.isCompleted" 
+          (change)="toggleCompletion(task)"
+        />
+        
+        <div class="task-content">
+          <h3>{{ task.title }}</h3>
+          
+          <!-- Only render the description if it exists -->
+          @if (task.description) {
+            <p>{{ task.description }}</p>
+          }
+        </div>
+
+        <button class="delete-btn" (click)="deleteTask(task.id)">Delete</button>
+      </div>
+    } 
+    @empty {
+      <!-- This shows automatically if the tasks array is empty -->
+      <p class="empty-state">No tasks yet. Create one above!</p>
+    }
+
+  </section>
+</div>
