@@ -212,7 +212,7 @@ namespace TaskHubApi.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("TaskHub.Api.Models.TaskItem", b =>
+            modelBuilder.Entity("TaskHubApi.Models.TaskItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -293,7 +293,7 @@ namespace TaskHubApi.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TaskHub.Api.Models.TaskItem", b =>
+            modelBuilder.Entity("TaskHubApi.Models.TaskItem", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
