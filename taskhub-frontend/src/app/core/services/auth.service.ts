@@ -56,4 +56,9 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !!this.getToken();
   }
+
+  register(credentials: any): Observable<any> {
+    // Identity API expects { email, password }
+    return this.http.post(`${this.apiUrl}/register`, credentials);
+  }
 }

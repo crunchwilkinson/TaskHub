@@ -1,24 +1,32 @@
-<div class="login-wrapper">
-  <h2>Sign In</h2>
-  
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="email">Email</label>
-      <input id="email" type="email" formControlName="email" />
+<div class="auth-container">
+  <div class="card auth-card">
+    <div class="auth-header">
+      <h2>Welcome Back</h2>
+      <p>Log in to your TaskHub account.</p>
     </div>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-layout">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" class="form-control" placeholder="name@company.com" />
+      </div>
 
-    <div>
-      <label for="password">Password</label>
-      <input id="password" type="password" formControlName="password" />
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" class="form-control" placeholder="••••••••" />
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">
+        Log In
+      </button>
+
+      @if (errorMessage) {
+        <div class="alert alert-error">{{ errorMessage }}</div>
+      }
+    </form>
+
+    <div class="auth-footer">
+      <p>Don't have an account? <a routerLink="/register">Sign up here</a></p>
     </div>
-
-    <!-- Button is disabled until both fields have valid input -->
-    <button type="submit" [disabled]="loginForm.invalid">
-      Log In
-    </button>
-  </form>
-
-  @if (errorMessage) {
-    <p style="color: red;">{{ errorMessage }}</p>
-  }
+  </div>
 </div>
