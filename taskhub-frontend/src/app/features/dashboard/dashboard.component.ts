@@ -23,10 +23,19 @@ export class DashboardComponent implements OnInit {
 
   // State: This array holds the data displayed in the UI
   tasks: TaskDto[] = [];
-  isLoading = true; 
+  isLoading = true;
+
+  // This variable tracks which task is currently being edited, if any. It's null when not editing.
+  editingTaskId: number | null = null; 
 
   // Define the Add Task form
   taskForm = this.fb.group({
+    title: ['', [Validators.required, Validators.minLength(3)]],
+    description: ['']
+  });
+
+  // Form for editing existing tasks
+  editTaskForm = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(3)]],
     description: ['']
   });
@@ -67,6 +76,45 @@ export class DashboardComponent implements OnInit {
       error: (err) => console.error('Failed to create task', err)
     });
   }
+
+  startEditing(task: TaskDto): void {
+    this.editingTaskId = task.id; // Set the ID of the task being edited
+    this.editTaskForm.patchValue({
+      title: task.title,
+      description: task.description || ''
+    });
+  }
+
+  cancelEdit() : void {
+    this.editingTaskId = null; // Exit edit mode
+    this.editTaskForm.reset(); // Clear the edit form
+  }
+
+  // Save the modified task
+  saveEdit(task: TaskDto) : void {
+    if (this.editTaskForm.invalid) return;
+
+    const updatedTask : TaskDto = {
+      ...task,
+      title: this.editTaskForm.value.title!,
+      description: this.editTaskForm.value.description || undefined
+    };
+
+    // Send to the backend
+    this.taskService.updateTask(task.id, updatedTask).subscribe({
+      next: () => {
+        // Update the task in the local array so the UI reflects the change
+        const index = this.tasks.findIndex(t => t.id === task.id);
+        if (index !== -1) {
+          this.tasks[index] = updatedTask;
+        }
+        // Exit edit mode
+        this.editingTaskId = null;
+      },
+      error: (err) => console.error('Failed to update task', err)
+    });
+  }
+    
 
   toggleCompletion(task: TaskDto): void {
     // Flip the local state immediately for a snappy UI
